@@ -1,0 +1,7 @@
+{
+  "port": 6000,
+  "mongo": {
+    "host": "localhost",
+    "db": "testnodecore"
+  }
+}
