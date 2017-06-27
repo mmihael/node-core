@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test';
+
 var mongooseUtil = require('./../utils/mongoose');
 var User = require('./../models/user');
 var expect = require('chai').expect;

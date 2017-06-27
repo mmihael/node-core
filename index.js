@@ -23,3 +23,5 @@ app.use(require('./utils/secure').JWT);
 app.use('/user', require('./routes/user'));
 
 app.listen(config.port, function () { console.log('Started listening...'); });
+
+module.exports = app;
