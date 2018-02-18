@@ -1,9 +1,9 @@
-var config = require('./configrc');
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var passport = require('./components/passport');
+const config = require('./configrc');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const passport = require('./components/passport');
 
 var app = express();
 app.use(express.static('public'));
@@ -15,11 +15,17 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/auth', require('./routes/auth'));
-app.use(require('./utils/secure').JWT);
+
+app.use({
+    jwt: require('./utils/secure').JWT,
+    cookie: require('./utils/secure').CookieSession
+}[config.auth.strategy]);
+
 app.use('/user', require('./routes/user'));
 
 app.listen(config.port, function () { console.log('Started listening...'); });

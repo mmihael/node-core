@@ -1,0 +1,11 @@
+{
+  "defaultEnv": "main",
+  "main": {
+    "host": "127.0.0.1",
+    "user": "vagrant",
+    "password" : "vagrant",
+    "database": "core",
+    "driver": "mysql",
+    "multipleStatements": true
+  }
+}
